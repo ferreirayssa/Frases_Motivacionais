@@ -1,6 +1,8 @@
-# 🌟 Frases Motivacionais (Web App)
+# 🍀 Frases Motivacionais (Web App)
 
 Um aplicativo web construído em **Flutter** para entregar inspiração diária. O projeto consome uma API de citações, traduz automaticamente para o português e permite que o usuário gerencie e compartilhe suas frases favoritas.
+
+**📌 Visitar[ Frases Motivacionais](https://frases-motivacionais-jlzp.onrender.com)** 
 
 ## 📸 Capturas de Tela
 
