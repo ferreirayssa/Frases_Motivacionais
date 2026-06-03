@@ -164,7 +164,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                               onPressed: () {
                                 if (fraseDoDia != null) {
                                   Share.share(
-                                    '"${fraseDoDia!.texto}"\n- ${fraseDoDia!.autor}\n\nCompartilhado do meu App!',
+                                    '"${fraseDoDia!.texto}"\n- ${fraseDoDia!.autor}\n\nCompartilhado do site: https://frases-motivacionais-jlzp.onrender.com !',
                                   );
                                 }
                               },
