@@ -50,18 +50,35 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         });
       }
     } catch (erro) {
-      // Tratamento de erro pode ser adicionado aqui
       setState(() => carregando = false);
     }
   }
 
-  Future<void> favoritarFrase() async {
+Future<void> favoritarFrase() async {
     if (fraseDoDia == null) return;
 
     final prefs = await SharedPreferences.getInstance();
     List<String> listaFavoritos = prefs.getStringList('meus_favoritos') ?? [];
 
-    String fraseParaSalvar = "${fraseDoDia!.texto} | Autor: ${fraseDoDia!.autor}";
+    String fraseParaSalvar = "${fraseDoDia!.texto.trim()} | Autor: ${fraseDoDia!.autor.trim()}";
+
+    bool jaExiste = listaFavoritos.any((fraseSalva) => 
+        fraseSalva.toLowerCase() == fraseParaSalvar.toLowerCase()
+    );
+
+    if (jaExiste) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Você já favoritou essa frase! 😉"),
+            backgroundColor: Colors.orange,
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+      return;
+    }
+
     listaFavoritos.add(fraseParaSalvar);
     await prefs.setStringList('meus_favoritos', listaFavoritos);
 
